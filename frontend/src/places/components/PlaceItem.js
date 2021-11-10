@@ -10,7 +10,7 @@ import { AuthContext } from '../../shared/context/auth-context';
 import { useHttpClient } from '../../shared/hooks/http-hook';
 import './PlaceItem.css';
 
-const PlaceItem = props => {
+const PlaceItem = (props) => {
   const { isLoading, error, sendRequest, clearError } = useHttpClient();
   const auth = useContext(AuthContext);
   const [showMap, setShowMap] = useState(false);
@@ -44,7 +44,7 @@ const PlaceItem = props => {
   };
 
   return (
-    <React.Fragment>
+    <>
       <ErrorModal error={error} onClear={clearError} />
       <Modal
         show={showMap}
@@ -64,14 +64,14 @@ const PlaceItem = props => {
         header="Are you sure?"
         footerClass="place-item__modal-actions"
         footer={
-          <React.Fragment>
+          <>
             <Button inverse onClick={cancelDeleteHandler}>
               CANCEL
             </Button>
             <Button danger onClick={confirmDeleteHandler}>
               DELETE
             </Button>
-          </React.Fragment>
+          </>
         }
       >
         <p>
@@ -109,7 +109,7 @@ const PlaceItem = props => {
           </div>
         </Card>
       </li>
-    </React.Fragment>
+    </>
   );
 };
 
